@@ -1,0 +1,16 @@
+.board {
+  padding:30px;
+  display: inline-block;
+  margin:0 auto;
+}
+
+.board-row {
+  padding:0;
+  margin:0;
+}
+
+.board-row:after {
+  clear: both;
+  content: "";
+  display: table;
+}

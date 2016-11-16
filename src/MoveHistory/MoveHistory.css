@@ -1,0 +1,15 @@
+.move-history {
+    float:left;
+}
+
+ul {
+    padding:10px;
+}
+
+li {
+    list-style: none;
+}
+
+.current {
+    font-weight:bold !important;
+}
