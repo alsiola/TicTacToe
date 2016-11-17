@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Paper from 'material-ui/Paper';
+import Paper from '../../Layout/Paper';
 import RaisedButton from 'material-ui/RaisedButton';
 import Subheader from 'material-ui/Subheader';
 import {List, ListItem} from 'material-ui/List';
@@ -14,7 +14,7 @@ class MoveHistory extends Component {
         return (
             <Paper zDepth={4}>
                 <Subheader>Move History</Subheader>
-                <RaisedButton primary={true} onTouchTap={() => this.props.toggleOrder()} label="Toggle Hx Order" />
+                <div><RaisedButton primary={true} onTouchTap={() => this.props.toggleOrder()} label="Toggle Hx Order" /></div>
                 <List>
                     {history.map((val, ind) => {
                         return (

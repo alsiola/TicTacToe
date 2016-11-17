@@ -18,13 +18,11 @@ class LoginForm extends Component {
         const actions = [
             <RaisedButton
                 label="Cancel"
-                primary={true}
                 onTouchTap={() => this.handleClose()}
             />,
             <RaisedButton
                 label="Login"
                 primary={true}
-                keyboardFocused={true}
                 onTouchTap={() => this.props.login(this.state.loginUser, this.state.password)}
             />,
             ];
@@ -58,12 +56,11 @@ class LoginForm extends Component {
             }
             {!this.props.loginStatus.inProgress && this.props.loginStatus.status }
             </Dialog>
-            <RaisedButton primary={true} onTouchTap={() => this.handleOpen()} label="Login" />
+            <RaisedButton onTouchTap={() => this.handleOpen()} label="Login" />
             </div>
         );
         return (            
-            <div>    
-                { this.props.loginStatus.status }                     
+            <div>                    
                 { !this.props.loginStatus.isLoggedIn && form }
             </div>
         );

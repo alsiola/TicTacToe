@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Paper from 'material-ui/Paper';
+import Paper from '../../Layout/Paper';
 import Subheader from 'material-ui/Subheader';
 import {List, ListItem} from 'material-ui/List';
 import ActionLaunch from 'material-ui/svg-icons/action/launch';

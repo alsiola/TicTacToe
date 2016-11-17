@@ -24,7 +24,7 @@ export function squares(state = [], action) {
     }
 }
 
-export function currentStep(state = 0, action) {
+export function currentStep(state = -1, action) {
     switch (action.type) {
         case actions.PLAY_TURN:
             if(!canMakeMove(action.squares, action.squareNum)) {
@@ -33,7 +33,7 @@ export function currentStep(state = 0, action) {
             return action.aiPlayer ? state + 2 : state + 1;
         case actions.RESET_GAME:
         case actions.LOAD_GAME:
-            return 0;
+            return -1;
         case actions.LOAD_HISTORY_ENTRY:
             return action.step;
         default:
@@ -41,8 +41,7 @@ export function currentStep(state = 0, action) {
     }
 }
 
-export function winningLine(state = [], action) {
-    
+export function winningLine(state = [], action) {    
     switch (action.type){
         case actions.PLAY_TURN:
             return checkForWinner(squares(action.squares.slice(), action));
@@ -52,6 +51,29 @@ export function winningLine(state = [], action) {
         case actions.LOAD_GAME:
             return [];
         default:
+            return state;
+    }
+}
+
+export function winningLetter(state = '', action) {
+    switch (action.type) {
+        case actions.PLAY_TURN:
+            const winningLine = checkForWinner(squares(action.squares.slice(), action));
+            if (winningLine.length > 0) {
+                return action.squares[winningLine[0]];
+            } else {
+                return state;
+            }
+        case actions.RESET_GAME:
+            return '';
+        case actions.LOAD_HISTORY_ENTRY:
+            const winLine = checkForWinner(action.squares);
+            if (winLine.length > 0) {
+                return action.squares[winLine[0]];
+            } else {
+                return '';
+            }
+        default: 
             return state;
     }
 }

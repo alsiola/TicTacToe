@@ -1,0 +1,13 @@
+.winning-status {
+    animation: winExpand 1s ease-in 0s 1; 
+}
+
+@keyframes winExpand {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(4,4);
+    }
+}

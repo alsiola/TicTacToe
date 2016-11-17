@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import {Provider} from 'react-redux';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import TicTacToeContainer from './TicTacToeContainer';
 import store from './Redux/Store';
 import injectTapEventPlugin from 'react-tap-event-plugin';
+import ReduxContainer from './Redux/ReduxContainer';
 
 class App extends Component {
   constructor() {
@@ -15,7 +15,7 @@ class App extends Component {
     return (
       <MuiThemeProvider>
         <Provider store={store}>
-          <TicTacToeContainer />
+          <ReduxContainer />
         </Provider>
       </MuiThemeProvider>
     )

@@ -1,7 +1,8 @@
 import {connect} from 'react-redux';
 import axios from 'axios';
-import * as actionCreators from './Redux/ActionCreators';
-import TicTacToeApp from './TicTacToeApp';
+import * as actionCreators from '../Redux/ActionCreators';
+import TicTacToeGame from './TicTacToeGame';
+import loadGamesFromServer from './Functions/loadGamesFromServer';
 
 const mapStateToProps = state => {
     return {
@@ -14,32 +15,14 @@ const mapStateToProps = state => {
         currentReplay: state.currentReplay,
         isReplayedGame: state.currentReplay !== 0,
         aiPlayer: state.aiPlayer,
+        saveGameStatus: state.saveGameStatus,        
         loginStatus: state.loginStatus,
-        saveGameStatus: state.saveGameStatus
+        winningLetter: state.winningLetter
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        login: (user, pass) => {
-            dispatch(actionCreators.loginAttemptStarted());
-            axios.post('/login', {
-                login: user,
-                password: pass
-            }).then(
-                response => {
-                    if (response.data.account.status === "ENABLED") {
-                        dispatch(actionCreators.userLoggedIn(response.data.account.username));
-                        loadGamesFromServer(dispatch);
-                    } else {
-                        dispatch(actionCreators.loginFailed());
-                    }
-                },
-                error => {
-                    dispatch(actionCreators.loginFailed());
-                }
-            )
-        },
         onPlayClick: (squareNum, letter, squares, aiPlayer, aiLetter) => {
             dispatch(actionCreators.playTurn(squareNum, letter, squares, aiPlayer, aiLetter))
         },
@@ -84,15 +67,9 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-function loadGamesFromServer(dispatch) {
-    axios.get('/api/games').then(response => {
-        dispatch(actionCreators.gamesLoaded(response.data));
-    });
-}
-
 const TicTacToeContainer = connect(
     mapStateToProps,
     mapDispatchToProps
-)(TicTacToeApp)
+)(TicTacToeGame)
 
 export default TicTacToeContainer
