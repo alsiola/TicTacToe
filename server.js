@@ -6,11 +6,6 @@ const routes = require('./rest/routes');
 
 console.log('got here');
 
-if (!process.env.DEVELOPMENT) {
-require('dotenv').config();
-}
-var config = JSON.parse(process.env.APP_CONFIG);
-
 const app = express();
 const MongoClient = mongo.MongoClient;
 
