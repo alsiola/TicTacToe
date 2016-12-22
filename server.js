@@ -14,7 +14,7 @@ routes(app);
 
 app.use(express.static('build'));
 
-MongoClient.connect("mongodb://" + config.mongo.user + ":tictacMongo@" + config.mongo.hostString, function(err, database) {
+MongoClient.connect(process.env.MONGODB_URI, function(err, database) {
     if (err) {
         return console.log(err);
     }
