@@ -1,6 +1,10 @@
+console.log('started');
+
 const express = require('express');
 const mongo = require('mongodb');
 const routes = require('./rest/routes');
+
+console.log('got here');
 
 if (!process.env.DEVELOPMENT) {
 require('dotenv').config();
