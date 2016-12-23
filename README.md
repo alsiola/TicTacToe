@@ -2,3 +2,5 @@
 An implementation of Tic Tac Toe using React
 
 Extends the tutorial found at https://facebook.github.io/react/tutorial/tutorial.html
+
+Currently deployed at https://tictaxtoe.herokuapp.com/
