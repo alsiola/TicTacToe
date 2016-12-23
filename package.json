@@ -70,8 +70,7 @@
     "express": "^4.14.0",
     "express-stormpath": "^3.1.6",
     "mongodb": "2.2.11",
-    "react-flexbox-grid": "0.10.2",
-    "webpack": "1.13.2"
+    "react-flexbox-grid": "0.10.2"
   },
   "scripts": {
     "dev": "node scripts/start.js",
